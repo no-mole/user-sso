@@ -1,0 +1,14 @@
+stages:
+  - test
+#  - build
+#  - deploy
+#  - publish
+
+include:
+  project: "infrastructure/ci_template"
+  file:
+    - "/go_test.yml"
+#    - "/docker_build.yml"
+#    - "/deploy.yml"
+#    - "/wechat_notify.yml"
+#    - "/publish.yml"
