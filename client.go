@@ -11,9 +11,8 @@ import (
 	"strings"
 	"time"
 
+	"github.com/no-mole/neptune/json"
 	"golang.org/x/oauth2"
-	"smart.gitlab.biomind.com.cn/infrastructure/biogo/json"
-	pb "smart.gitlab.biomind.com.cn/infrastructure/user/protos/user"
 )
 
 type Client struct {
@@ -153,7 +152,11 @@ type AccessItems struct {
 	Items []*AccessItem `json:"items"`
 }
 
-type AccessItem pb.AccessItem
+type AccessItem struct {
+	Resource string `protobuf:"bytes,1,opt,name=resource,proto3" json:"resource,omitempty"`
+	Action   string `protobuf:"bytes,2,opt,name=action,proto3" json:"action,omitempty"`
+	Ok       bool   `protobuf:"varint,3,opt,name=ok,proto3" json:"ok,omitempty"`
+}
 
 type AccessResponse struct {
 	Code int64         `json:"code"`
